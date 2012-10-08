@@ -57,7 +57,7 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:1];
     self.logoImage.transform = CGAffineTransformIdentity;
-    self.logoImage.transform = CGAffineTransformMakeRotation(degreesToRadians(359));
+    self.logoImage.transform = CGAffineTransformMakeRotation(degreesToRadians(180));
     [UIView commitAnimations];
 #endif
 }
@@ -68,6 +68,7 @@
 
 - (IBAction)startAnimation {
     [self animate];
+    [self.spinner stopAnimating];
     self.spinner = [MuseMeActivityIndicator new];
     [self.spinner startAnimatingWithMessage:@"Loading..." inView:self.view];
 }
@@ -75,6 +76,6 @@
 - (IBAction)stopAnimation:(id)sender {
     CGRect frame = CGRectMake(0, 183, 320, 53);
     self.logoImage.frame = frame;
-    [_spinner stopAnimating];
+    [self.spinner stopAnimating];
 }
 @end
